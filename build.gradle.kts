@@ -42,4 +42,31 @@ subprojects {
     tasks.withType<Test>().configureEach {
         useJUnitPlatform()
     }
+
+    // ── Домашка: «красные» задания (отдельная задача homeworkTest) ───────────────
+    // Учащийся реализует homework/src/main/java, делая homework/src/test/java зелёными.
+    // Общий ./gradlew build остаётся ЗЕЛЁНЫМ — homeworkTest НЕ входит в check/build.
+    // Запуск:  ./gradlew :modules:mNN-slug:homeworkTest
+    if (file("homework").exists()) {
+        val sourceSets = extensions.getByType<SourceSetContainer>()
+        val mainOutput = sourceSets.named("main").get().output
+        val homework = sourceSets.create("homework") {
+            java.setSrcDirs(listOf("homework/src/main/java", "homework/src/test/java"))
+        }
+        configurations.named("homeworkImplementation") {
+            extendsFrom(configurations.named("testImplementation").get())
+        }
+        configurations.named("homeworkRuntimeOnly") {
+            extendsFrom(configurations.named("testRuntimeOnly").get())
+        }
+        dependencies {
+            "homeworkImplementation"(mainOutput)
+        }
+        tasks.register<Test>("homeworkTest") {
+            description = "«Красные» тесты домашки: сделай их зелёными (см. homework/README.md)."
+            group = "verification"
+            testClassesDirs = homework.output.classesDirs
+            classpath = homework.runtimeClasspath
+        }
+    }
 }
