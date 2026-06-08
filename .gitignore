@@ -1,0 +1,33 @@
+# ── Gradle ──────────────────────────────────────────────
+.gradle/
+build/
+# wrapper jar должен быть в репозитории — не игнорируем
+!gradle/wrapper/gradle-wrapper.jar
+
+# ── Сборка / артефакты ──────────────────────────────────
+out/
+target/
+bin/
+*.class
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# ── IDE ─────────────────────────────────────────────────
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.project
+.classpath
+.settings/
+*.code-workspace
+
+# ── JVM crash logs ──────────────────────────────────────
+hs_err_pid*
+replay_pid*
+*.hprof
+
+# ── OS ──────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
