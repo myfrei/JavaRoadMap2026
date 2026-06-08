@@ -28,4 +28,8 @@ include(
     "modules:m17-cloud-native",
     "modules:m18-ai-data",
     "modules:m19-parsing",
+    // ── Advance-трек: углублённые модули по конкретным технологиям ──
+    "modules:m20-docker",
+    "modules:m21-kafka",
+    "modules:m22-postgres",
 )

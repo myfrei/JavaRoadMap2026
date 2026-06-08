@@ -39,7 +39,7 @@
 ## 📌 О курсе
 
 - **Бесплатно и навсегда.** Только открытые ресурсы: официальная документация, бесплатные книги, доклады, блоги.
-- **20 модулей** (00–19) — от терминала и синтаксиса до JVM-внутренностей, распределённых систем и AI.
+- **20 модулей** (00–19) + **advance-трек** (Docker, Kafka, PostgreSQL) — от терминала и синтаксиса до JVM-внутренностей, распределённых систем и AI.
 - **Документация + код.** Теория в `course/`, запускаемый скелет в `modules/` (Java 25, Gradle, JUnit 5).
 - **Проектный подход.** Каждый модуль = мини-проект на GitHub. К концу курса — портфолио из 15+ проектов.
 - **Современный стек 2026.** Java 25 LTS, virtual threads, Spring Boot 3, GraalVM, OpenTelemetry, Spring AI.
@@ -76,6 +76,19 @@
 
 Дополнительно: [03-concurrency-examples](course/03-concurrency-examples.md) и
 [06-web-examples](course/06-web-examples.md) — companion-файлы с примерами кода от простого к продвинутому.
+
+### 🚀 Advance-трек — углублённые модули по технологиям
+
+Отдельная ветка для глубокого погружения в конкретные инструменты (проходить после основных модулей):
+
+| Модуль | Ур. | Темы | Код |
+|--------|-----|------|-----|
+| [20. Docker](course/20-docker.md) | 🔴 | Dockerfile, multi-stage, compose, несколько инстансов за балансировщиком | [m20](modules/m20-docker) |
+| [21. Kafka](course/21-kafka.md) | 🔴 | Идемпотентность, гарантии доставки, оффсеты, retry/DLQ, compaction | [m21](modules/m21-kafka) |
+| [22. PostgreSQL](course/22-postgres.md) | 🔴 | Индексы, EXPLAIN ANALYZE, sargability, SQL-запросы из Java, keyset-пагинация | [m22](modules/m22-postgres) |
+
+У каждого — концентрированная домашка по теме (`./gradlew :modules:mNN-slug:homeworkTest`):
+Postgres — индексы и SQL из Java; Kafka — идемпотентность и надёжность; Docker — образы, compose и масштабирование.
 
 ---
 
