@@ -3,6 +3,7 @@
 Запускаемый код-скелет модуля.
 
 - 📖 Теория и проект модуля: [`../../course/08-microservices.md`](../../course/08-microservices.md)
+- 📚 Статьи-теория: [`theory/README.md`](theory/README.md)
 - 📝 Домашка («красные» задания): [`homework/README.md`](homework/README.md)
 
 ```bash
