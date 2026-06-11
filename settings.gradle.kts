@@ -33,3 +33,15 @@ include(
     "modules:m21-kafka",
     "modules:m22-postgres",
 )
+
+// ─── Код трека Java Spring (1:1 с java-spring/NN-*/README.md) ────────────────
+// Каждый модуль трека — подпроект: код в src/, домашка в homework/ (как в modules/).
+include(
+    "java-spring:01-ioc-di-beans",
+    "java-spring:02-spring-data-jpa",
+    "java-spring:03-mvc-controllers",
+    "java-spring:04-config-security",
+    "java-spring:05-testing-kafka",
+    "java-spring:06-reactive-webflux",
+    "java-spring:07-concurrency",
+)

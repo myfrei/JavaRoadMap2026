@@ -11,6 +11,24 @@
 5. [Hibernate изнутри: сущности и их особенности](05-hibernate-internals.md)
 6. [JDBC Template vs Hibernate: когда нужно быстро](06-jdbc-template-vs-hibernate.md)
 
+## 💻 Код модуля
+
+Рядом со статьями живёт запускаемый код (Gradle-подпроект `:java-spring:02-spring-data-jpa`,
+домен — библиотека: автор → книги, книги ↔ жанры):
+
+- [`src/main/java/...`](src/main/java/com/javaroadmap/spring/s02/) — сущности со связями
+  `@OneToMany`/`@ManyToMany`, репозитории (derived queries, `join fetch` против N+1),
+  Liquibase-миграции на H2, отчёт через `JdbcTemplate`.
+- [`src/test/java/...`](src/test/java/com/javaroadmap/spring/s02/) — `@DataJpaTest` (каскады,
+  orphanRemoval, `LazyInitializationException`), тест миграций, JPA + чистый SQL в одной транзакции.
+- [`homework/`](homework/README.md) — домашка: 6 заданий с «красными» тестами
+  (`./gradlew :java-spring:02-spring-data-jpa:homeworkTest`).
+
+```bash
+./gradlew :java-spring:02-spring-data-jpa:test          # тесты примеров
+./gradlew :java-spring:02-spring-data-jpa:homeworkTest  # «красные» задания
+```
+
 ---
 
 [📚 К треку Java Spring](../README.md)

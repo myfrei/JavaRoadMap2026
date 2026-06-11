@@ -1,0 +1,7 @@
+# Мастер-чейнджлог (статья 04): только включает файлы-чейнджсеты по порядку.
+# Новая миграция = новый файл + include здесь. Старые файлы не редактируются никогда.
+databaseChangeLog:
+  - include:
+      file: db/changelog/v1.0-schema.sql
+  - include:
+      file: db/changelog/v1.1-seed-genres.sql

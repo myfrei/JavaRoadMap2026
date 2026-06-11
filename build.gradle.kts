@@ -28,15 +28,27 @@ subprojects {
         }
     }
 
-    // main-класс выводится из имени модуля: "m07-testing" -> com.javaroadmap.m07.Main
+    // main-класс выводится из имени модуля:
+    //   modules:     "m07-testing"      -> com.javaroadmap.m07.Main
+    //   java-spring: "01-ioc-di-beans"  -> com.javaroadmap.spring.s01.Main
     extensions.configure<JavaApplication> {
-        mainClass.set("com.javaroadmap.${project.name.substringBefore("-")}.Main")
+        val pkg = if (project.path.startsWith(":java-spring:"))
+            "spring.s${project.name.substringBefore("-")}"
+        else
+            project.name.substringBefore("-")
+        mainClass.set("com.javaroadmap.$pkg.Main")
     }
 
     dependencies {
         "testImplementation"(platform("org.junit:junit-bom:5.11.4"))
         "testImplementation"("org.junit.jupiter:junit-jupiter")
         "testRuntimeOnly"("org.junit.platform:junit-platform-launcher")
+    }
+
+    // Имена параметров в байткоде: Spring MVC резолвит @PathVariable/@RequestParam
+    // по имени аргумента (Boot-плагин добавляет этот флаг сам, у нас его нет).
+    tasks.withType<JavaCompile>().configureEach {
+        options.compilerArgs.add("-parameters")
     }
 
     tasks.withType<Test>().configureEach {

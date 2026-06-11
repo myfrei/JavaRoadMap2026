@@ -11,6 +11,25 @@
 5. [gRPC и Spring](05-grpc-with-spring.md)
 6. [WebSocket и Spring](06-websocket-with-spring.md)
 
+## 💻 Код модуля
+
+Рядом со статьями живёт запускаемый код (Gradle-подпроект `:java-spring:03-mvc-controllers`,
+домен — список задач):
+
+- [`src/main/java/...`](src/main/java/com/javaroadmap/spring/s03/) — REST CRUD с валидацией и
+  `@RestControllerAdvice`, контраст `@Controller`/`@RestController`, gRPC-сервис на in-process
+  транспорте (контракт написан руками вместо protoc — видно устройство), WebSocket-эхо.
+- [`src/test/java/...`](src/test/java/com/javaroadmap/spring/s03/) — `@WebMvcTest` с проверкой
+  маршрутизации DispatcherServlet (`handler()`), валидации и advice; gRPC-вызов через in-process
+  канал; живой WebSocket-тест на случайном порту.
+- [`homework/`](homework/README.md) — домашка: 5 заданий с «красными» тестами
+  (`./gradlew :java-spring:03-mvc-controllers:homeworkTest`).
+
+```bash
+./gradlew :java-spring:03-mvc-controllers:test          # тесты примеров
+./gradlew :java-spring:03-mvc-controllers:homeworkTest  # «красные» задания
+```
+
 ---
 
 [📚 К треку Java Spring](../README.md)

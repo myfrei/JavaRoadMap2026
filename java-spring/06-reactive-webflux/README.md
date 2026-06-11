@@ -14,6 +14,25 @@
 - [Backpressure и управление потоком](05-backpressure.md)
 - [Тестируем реактивные компоненты](06-testing-reactive.md)
 
+## 💻 Код модуля
+
+Рядом со статьями живёт запускаемый код (Gradle-подпроект `:java-spring:06-reactive-webflux`,
+WebFlux на Netty + реактивный H2 через R2DBC):
+
+- [`src/main/java/...`](src/main/java/com/javaroadmap/spring/s06/) — операторы Reactor на потоке цен
+  (`PriceOps`: скользящее среднее, фильтр выбросов, fallback, timeout, `onBackpressureLatest`),
+  аннотационный контроллер и functional endpoints, `ReactiveCrudRepository`, `WebClient`.
+- [`src/test/java/...`](src/test/java/com/javaroadmap/spring/s06/) — `StepVerifier` (включая
+  `withVirtualTime` и `TestPublisher`), backpressure через `thenRequest`, `@WebFluxTest` +
+  `WebTestClient`, `@DataR2dbcTest`, интеграционный тест `WebClient` на живом Netty.
+- [`homework/`](homework/README.md) — домашка: 4 задания с «красными» тестами
+  (`./gradlew :java-spring:06-reactive-webflux:homeworkTest`).
+
+```bash
+./gradlew :java-spring:06-reactive-webflux:test          # тесты примеров
+./gradlew :java-spring:06-reactive-webflux:homeworkTest  # «красные» задания
+```
+
 ---
 
 [📚 К треку Java Spring](../README.md)

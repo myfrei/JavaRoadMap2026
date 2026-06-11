@@ -11,6 +11,24 @@
 5. [CORS и Spring](05-cors.md)
 6. [OAuth2 и JWT в Spring Security](06-oauth2-jwt.md)
 
+## 💻 Код модуля
+
+Рядом со статьями живёт запускаемый код (Gradle-подпроект `:java-spring:04-config-security`):
+
+- [`src/main/java/...`](src/main/java/com/javaroadmap/spring/s04/) — `@ConfigurationProperties` +
+  профиль dev, ДВЕ security-цепочки (Basic для `/api/**`, JWT resource server для `/api/jwt/**`),
+  URL-авторизация по ролям, `@PreAuthorize`, CORS, выпуск JWT (HS256) через `JwtEncoder`.
+- [`src/test/java/...`](src/test/java/com/javaroadmap/spring/s04/) — биндинг конфигурации и профилей,
+  401 vs 403 c `httpBasic(...)`, method security c `@WithMockUser`, preflight-тесты CORS,
+  полный JWT-флоу: Basic-логин → токен → Bearer-доступ.
+- [`homework/`](homework/README.md) — домашка: 5 заданий с «красными» тестами
+  (`./gradlew :java-spring:04-config-security:homeworkTest`).
+
+```bash
+./gradlew :java-spring:04-config-security:test          # тесты примеров
+./gradlew :java-spring:04-config-security:homeworkTest  # «красные» задания
+```
+
 ---
 
 [📚 К треку Java Spring](../README.md)

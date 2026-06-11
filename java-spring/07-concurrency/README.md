@@ -13,6 +13,27 @@
 5. [Java Memory Model и happens-before](05-java-memory-model.md) — reordering, видимость, safe publication, `final`.
 6. [Типичные проблемы многопоточности](06-concurrency-problems.md) — deadlock, livelock, starvation, race condition, диагностика.
 
+## 💻 Код модуля
+
+Рядом со статьями живёт запускаемый код (Gradle-подпроект `:java-spring:07-concurrency`,
+чистая Java без Spring):
+
+- [`src/main/java/...`](src/main/java/com/javaroadmap/spring/s07/) — Thread/Runnable/Callable
+  (`FutureTask` как мост), три счётчика (гонка → `synchronized` → атомик), `ExecutorService` vs
+  ForkJoin на одной задаче, `CompletableFuture`-пайплайны и виртуальные потоки, `volatile`-флаг
+  остановки (JMM), детерминированный дедлок и его лекарство — порядок захвата замков.
+- [`src/test/java/...`](src/test/java/com/javaroadmap/spring/s07/) — детерминированные тесты
+  конкурентного кода: общий старт латчами, рандеву вместо `sleep`, настоящий дедлок,
+  детектируемый через `ThreadMXBean`.
+- [`homework/`](homework/README.md) — домашка: 5 заданий с «красными» тестами
+  (`./gradlew :java-spring:07-concurrency:homeworkTest`).
+
+```bash
+./gradlew :java-spring:07-concurrency:test          # тесты примеров
+./gradlew :java-spring:07-concurrency:homeworkTest  # «красные» задания
+./gradlew :java-spring:07-concurrency:run           # демо ParallelSummer
+```
+
 ---
 
 [📚 К треку Java Spring](../README.md)
